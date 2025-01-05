@@ -1,0 +1,2 @@
+export const DEFAULT_SERVICE_PORT='3000';
+export const DEFAULT_EUREKA_PORT='8761';

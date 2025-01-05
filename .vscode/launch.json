@@ -1,0 +1,189 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [  
+
+        {
+            "type":"pwa-chrome",
+            "request":"launch",
+            "name":"Launch Chrome against localhost",
+            "url":"http://localhost:3005",
+            "webRoot":"${workspaceFolder}/apps/web"
+         },     
+        {
+            
+            "type": "node",
+            "request": "launch",
+            "name": "Debug graphql Adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "graphql-adapter"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        }
+        ,     
+        {
+            
+            "type": "node",
+            "request": "launch",
+            "name": "Debug WS-gateway",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "ws-gateway"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+            
+            "type": "node",
+            "request": "launch",
+            "name": "Debug graphql-code Adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "graphql-adapter-code"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+            
+            "type": "node",
+            "request": "launch",
+            "name": "Debug rest Adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "rest-adapter"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+           
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Nest-front-back",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "nest-front-back"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+          
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Amqp Adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "amqp-adapter"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+          
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Amqp Simple Adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "amqp-simple-adapter"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        },
+        {
+          
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Amqp Websocket",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "ws-gateway"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        }
+        ,
+        {
+          
+            "type": "node",
+            "request": "launch",
+            "name": "Debug gRPC adapter",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+            "run",
+            "start:debug",
+            "--",
+            "--inspect-brk",
+            "grpc-adapter"
+            ],
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "integratedTerminal",
+        }
+    ]
+}

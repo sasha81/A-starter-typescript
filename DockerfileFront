@@ -1,0 +1,48 @@
+FROM node:18-alpine AS BUILD
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install -g pnpm
+RUN pnpm install 
+
+COPY . .
+
+WORKDIR /app/apps/web
+RUN pnpm install --force
+
+RUN pnpm run build
+  
+COPY ./apps/web/env.sh /docker-entrypoint.d/env.sh
+RUN chmod +x /docker-entrypoint.d/env.sh
+
+
+RUN npm install -g http-server
+EXPOSE 8080
+ENTRYPOINT ["/bin/sh", "-c" ,"/docker-entrypoint.d/env.sh && http-server /app/apps/web/dist"]
+
+# FROM nginx:mainline
+
+# COPY --from=BUILD /app/apps/web/dist /usr/share/nginx/html
+
+# COPY ./apps/web/nginx.conf /etc/nginx/conf.d/default.conf
+# EXPOSE 30015
+# CMD ["nginx","-g","daemon off;"]
+
+# An easier version
+# FROM node:18-alpine
+
+# WORKDIR /app
+
+# COPY package.json .
+
+# COPY vite.config.ts .
+
+# RUN npm install --force
+
+# COPY . .
+
+# EXPOSE 3005
+
+# CMD [ "npm", "run", "dev" ]

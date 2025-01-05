@@ -1,0 +1,52 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es2017",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "types": ["vite/client"],
+        "paths": {
+          "@libs/commons": [
+            "../../libs/commons/src"
+          ],
+          "@libs/commons/*": [
+            "../../libs/commons/src/*"
+          ],
+          "@rest-adapter": [
+            "../rest-adapter/src"
+          ],
+          "@rest-adapter/*": [
+            "../rest-adapter/src/*"
+          ],          
+          "@graphql-adapter": [
+            "../graphql-adapter/src"
+          ],
+          "@graphql-adapter/*": [
+            "../graphql-adapter/src/*"
+          ],
+          "@graphql-adapter-code": [
+            "../graphql-adapter-code/src"
+          ],
+          "@graphql-adapter-code/*": [
+            "../graphql-adapter-code/src/*"
+          ],
+          "@ws-gateway": [
+            "../ws-gateway/src"
+          ],
+          "@ws-gateway/*": [
+            "../ws-gateway/src/*"
+          ]
+        }
+      },
+      "include": ["./src"]
+}

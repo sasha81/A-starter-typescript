@@ -1,0 +1,1 @@
+export const DEFAULT_REST_URL='http://localhost:3000'

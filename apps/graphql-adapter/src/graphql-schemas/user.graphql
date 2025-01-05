@@ -1,0 +1,45 @@
+type Query {
+  getAllUsers: [UserView] 
+}
+
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+}
+
+type User {
+  userId: String!
+  name: String!
+  age: Int! 
+}
+
+type UserView {
+  userId: String!
+  name: String
+  age: Int
+  groups: [Group] 
+}
+
+type Group {
+  groupId: String!
+  groupName: String
+  groupStatus: Boolean
+  userId: String
+  userStatus: Boolean
+}
+
+type UserId {
+  id: String
+}
+
+input CreateUserInput {
+  name: String!
+  age: Int!
+}
+
+input UpdateUserInput {
+  userId: String!
+  name: String!
+  age: Int!
+}

@@ -1,0 +1,1 @@
+export * from '../../../../apps/grpc-adapter/src/from-proto/auth'

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/rest-adapter/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/rest-adapter/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/rest-adapter",
+  "projects": {
+    "grpc-adapter": {
+      "type": "application",
+      "root": "apps/grpc-adapter",
+      "entryFile": "main",
+      "sourceRoot": "apps/grpc-adapter/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/grpc-adapter/tsconfig.app.json",
+        "assets": [
+          "../proto/*.proto"
+        ],
+        "watchAssets": true
+      }
+    },
+    "rest-adapter": {
+      "type": "application",
+      "root": "apps/rest-adapter",
+      "entryFile": "main",
+      "sourceRoot": "apps/rest-adapter/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/rest-adapter/tsconfig.app.json"
+      }
+    },
+    "users": {
+      "type": "library",
+      "root": "libs/users",
+      "entryFile": "index",
+      "sourceRoot": "libs/users/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/users/tsconfig.lib.json"
+      }
+    },
+    "commons": {
+      "type": "library",
+      "root": "libs/commons",
+      "entryFile": "index",
+      "sourceRoot": "libs/commons/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/commons/tsconfig.lib.json"
+      }
+    },
+    "client": {
+      "type": "library",
+      "root": "libs/client",
+      "entryFile": "index",
+      "sourceRoot": "libs/client/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/client/tsconfig.lib.json"
+      }
+    },
+    "amqp-simple-adapter": {
+      "type": "application",
+      "root": "apps/amqp-simple-adapter",
+      "entryFile": "main",
+      "sourceRoot": "apps/amqp-simple-adapter/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/amqp-simple-adapter/tsconfig.app.json"
+      }
+    },
+    "amqp-adapter": {
+      "type": "application",
+      "root": "apps/amqp-adapter",
+      "entryFile": "main",
+      "sourceRoot": "apps/amqp-adapter/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/amqp-adapter/tsconfig.app.json"
+      }
+    },
+    "ws-gateway": {
+      "type": "application",
+      "root": "apps/ws-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/ws-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/ws-gateway/tsconfig.app.json"
+      }
+    },
+    "graphql-adapter": {
+      "type": "application",
+      "root": "apps/graphql-adapter",
+      "entryFile": "main",
+      "sourceRoot": "apps/graphql-adapter/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/graphql-adapter/tsconfig.app.json"
+      }
+    },
+    "graphql-adapter-code": {
+      "type": "application",
+      "root": "apps/graphql-adapter-code",
+      "entryFile": "main",
+      "sourceRoot": "apps/graphql-adapter-code/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/graphql-adapter-code/tsconfig.app.json"
+      }
+    }
+  }
+}

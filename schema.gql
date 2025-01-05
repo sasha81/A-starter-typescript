@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""user"""
+type User {
+  userId: ID!
+  name: String!
+  age: Int!
+}
+
+type Group {
+  groupId: ID!
+  groupName: String!
+  groupStatus: Boolean!
+  userId: String!
+  userStatus: Boolean!
+}
+
+type UserViewDto {
+  userId: ID!
+  name: String!
+  age: Int!
+  groups: [Group!]!
+}
+
+type Query {
+  getAllUsers: [UserViewDto!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
+  age: Int!
+}
+
+input UpdateUserInput {
+  userId: ID!
+  name: String!
+  age: Int!
+}
