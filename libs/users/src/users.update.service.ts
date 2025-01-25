@@ -16,8 +16,6 @@ export class UsersUpdateService {
     this.logger.log('findAllUsers users: ', users)
     const usersWithGroupMapToArrayAndNo_id = users
       .map((uv) => {
-
-
         return {
           userId: uv.userId,
           name: uv.name,
@@ -25,12 +23,9 @@ export class UsersUpdateService {
           groups: uv.groups ? Array.from(uv.groups, ([_, val]) => ({ ...val })) : []
         }
       })
-
-
     return usersWithGroupMapToArrayAndNo_id
   }
-
-
+  
   async upsertUsers(userDtoArray: UpdateUserDto[]): Promise<void> {
     const updateUserArr = userDtoArray.map(user => ({ ...user } as IMongoUser))
     await this.userQueryMongoDbRepo.upsertUsers(updateUserArr)

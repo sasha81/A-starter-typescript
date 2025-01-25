@@ -8,8 +8,8 @@ import { UsersUpdateService } from '@libs/users/users.update.service'
 
 
 @Controller()
-export class AmqpAdapterQueryController {
-  private readonly logger = new Logger(AmqpAdapterQueryController.name);
+export class AmqpAdapterViewController {
+  private readonly logger = new Logger(AmqpAdapterViewController.name);
   constructor(
     private readonly userService: UsersUpdateService,
     private readonly service: AmqpAdapterService

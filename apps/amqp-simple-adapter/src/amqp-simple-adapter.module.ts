@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { configuration } from './config/configuration';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule, queryHandlers } from '@libs/users/users.module';
@@ -9,7 +9,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { AmqpSenderService } from './services/amqp-sender.service';
 import { AmqpAdapterService } from './services/amqp-adapter.service';
 import { AmqpAdapterCommandController } from './controllers/amqp-command.controller';
-import { AmqpAdapterQueryController } from './controllers/amqp-query.controller';
+import { AmqpAdapterViewController } from './controllers/amqp-view.controller';
 
 @Module({
   imports: [...(process.env.NODE_ENV === 'prod_ext' ? [] : [ConfigModule.forRoot({
@@ -32,7 +32,7 @@ import { AmqpAdapterQueryController } from './controllers/amqp-query.controller'
     },
   ]),
     AmqpAdapterModule, CqrsModule, UsersModule],
-  controllers: [AmqpAdapterController, AmqpAdapterCommandController, AmqpAdapterQueryController],
-  providers: [AmqpAdapterController, AmqpAdapterCommandController, AmqpAdapterQueryController, AmqpAdapterService, AmqpSenderService, ...queryHandlers],
+  controllers: [AmqpAdapterController, AmqpAdapterCommandController, AmqpAdapterViewController],
+  providers: [AmqpAdapterController, AmqpAdapterCommandController, AmqpAdapterViewController, AmqpAdapterService, AmqpSenderService, ...queryHandlers],
 })
 export class AmqpAdapterModule { }
