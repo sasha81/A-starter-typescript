@@ -7,6 +7,7 @@ import { User } from '../model/User';
 import { UsersNotFoundException } from '@libs/users/exceptions/UserNotFoundException';
 import { UserQueryDto } from '@libs/users/queries/query-dto/read-users.dto';
 import { getCreateUserCommandFromCreateUserDto, getUpdateUserCommandFromUpdateUserDto, getUserDtoWithGroupsFromQueryDto } from '../converters/cqrs-user.converter';
+import { DEFAULT_QUERY_LIMIT } from '@libs/users/config/default-consts';
 
 @Injectable()
 export class GraphqlAdapterService {
@@ -16,9 +17,9 @@ export class GraphqlAdapterService {
     private readonly queryBus: QueryBus,) { }
 
 
-  async getAllUsers(): Promise<UserQueryDto[]> {
+  async getAllUsers(limit=DEFAULT_QUERY_LIMIT): Promise<UserQueryDto[]> {
     //throw new UsersNotFoundException('No users found. Sorry...')
-    const users = await this.queryBus.execute(new FindAllUsersQuery());
+    const users = await this.queryBus.execute(new FindAllUsersQuery(limit));
     const result = getUserDtoWithGroupsFromQueryDto(users)
     return result
   }

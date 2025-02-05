@@ -25,7 +25,7 @@ type UserViewDto {
 }
 
 type Query {
-  getAllUsers: [UserViewDto!]!
+  getAllUsers(limit: Int!): [UserViewDto!]!
 }
 
 type Mutation {

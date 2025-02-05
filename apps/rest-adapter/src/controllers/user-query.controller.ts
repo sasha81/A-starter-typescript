@@ -52,7 +52,8 @@ export class UserQueryController {
   async getAll() {
     return tsRestHandler(userApi.getAll, async ({ query }) => {
       // this.logger.log('users/all query', query)
-      const users = (await this.queryBus.execute(new FindAllUsersQuery())) as TUserDtoWithGroups[];
+      const limit =  typeof query.limit === "string" ? Number(query.limit) : query.limit
+      const users = (await this.queryBus.execute(new FindAllUsersQuery(limit ))) as TUserDtoWithGroups[];
       const result = getUserDtoWithGroupsFromQueryDto(users)
 
       return { status: 200, body: result };

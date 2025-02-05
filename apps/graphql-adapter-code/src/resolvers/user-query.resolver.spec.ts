@@ -46,10 +46,11 @@ describe('UserGraphqlResolver', () => {
 
 
   it('should get all users', async () => {
+    const limit=10;
     const mockedGetAllUsers = jest.fn().mockResolvedValue(Promise.resolve(mockUserArr))
     graphqlAdapterService.getAllUsers = mockedGetAllUsers;
     expect(
-      await resolver.getAllUsers()
+      await resolver.getAllUsers(limit)
     ).toBe(mockUserArr);
 
 

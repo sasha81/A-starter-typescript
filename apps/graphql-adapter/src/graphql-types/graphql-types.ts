@@ -20,7 +20,7 @@ export interface UpdateUserInput {
 }
 
 export interface IQuery {
-    getAllUsers(): Nullable<Nullable<UserViewDto>[]> | Promise<Nullable<Nullable<UserViewDto>[]>>;
+    getAllUsers(limit: number): Nullable<Nullable<UserView>[]> | Promise<Nullable<Nullable<UserView>[]>>;
 }
 
 export interface IMutation {
@@ -34,10 +34,10 @@ export interface User {
     age: number;
 }
 
-export interface UserViewDto {
+export interface UserView {
     userId: string;
-    name: Nullable<string>;
-    age: Nullable<number>;
+    name?: Nullable<string>;
+    age?: Nullable<number>;
     groups?: Nullable<Nullable<Group>[]>;
 }
 

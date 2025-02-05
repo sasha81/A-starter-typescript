@@ -9,7 +9,7 @@ export class UserQueryHandler implements IQueryHandler<FindAllUsersQuery> {
     private userQueryService: UserQueryService,
   ) { }
   async execute(query: FindAllUsersQuery): Promise<UserQueryDto[]> {
-    const userDtos = (await this.userQueryService.findAllUsers()) as UserQueryDto[];
+    const userDtos = (await this.userQueryService.findAllUsers(query.lim)) as UserQueryDto[];
 
     return userDtos;
   }

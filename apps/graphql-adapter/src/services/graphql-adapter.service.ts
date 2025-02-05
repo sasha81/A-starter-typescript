@@ -2,12 +2,9 @@
 import { FindAllUsersQuery } from '@libs/users/queries/find-users.query';
 import { Injectable, Logger } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { CreateUserInput, User, UserViewDto } from '../graphql-types/graphql-types';
-import { CreateUserCommand } from '@libs/users/commands/create-user.command';
-import { UpdateUserCommand } from '@libs/users/commands/update-users.command';
-import { UsersNotFoundException } from '@libs/users/exceptions/UserNotFoundException';
-import { UserAggregate } from '@libs/users/aggregate/user.aggregate';
-import { getCreateUserCommandFromCreateUserDto, getUpdateUserCommandFromUpdateUserDto, getUserDtoFromUserAggregate, getUserDtoWithGroupsFromQueryDto } from '../converters/cqrs-user.converter';
+import { CreateUserInput, User, UserView } from '../graphql-types/graphql-types';
+import { getCreateUserCommandFromCreateUserDto, getUpdateUserCommandFromUpdateUserDto,  getUserDtoWithGroupsFromQueryDto } from '../converters/cqrs-user.converter';
+import { DEFAULT_QUERY_LIMIT } from '@libs/users/config/default-consts';
 
 @Injectable()
 export class GraphqlAdapterService {
@@ -17,7 +14,7 @@ export class GraphqlAdapterService {
     private readonly queryBus: QueryBus,) { }
 
 
-  async getAllUsers(): Promise<UserViewDto[]> {
+  async getAllUsers(limit=DEFAULT_QUERY_LIMIT): Promise<UserView[]> {
     //throw new UsersNotFoundException('No users found. Sorry...')
     const users = await this.queryBus.execute(new FindAllUsersQuery());
     const result = getUserDtoWithGroupsFromQueryDto(users)

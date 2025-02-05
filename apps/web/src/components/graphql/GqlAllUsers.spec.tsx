@@ -9,6 +9,7 @@ import { ThemeProvider } from '@mui/styles';
 import theme from '../common/Theme';
 import { getGqlTheme } from './GqlTheme';
 import { Group, UserViewDto } from '@graphql-adapter-code/dto/UserWithGroupDto';
+import { DEFAULT_QUERY_LIMIT } from 'src/utils/consts';
 
 const getGroups = (userId: string): Group[] => {
   return [{ groupId: 'abc', groupName: 'A', groupStatus: true, userId, userStatus: false }]
@@ -39,13 +40,12 @@ describe('<GqlAllUsers />', () => {
 
 
   test('GqlAllUsers mounts correctly and renders loading before the data is loaded', async () => {
-
-    const dataMock = [user1, user2]
-    const userClick = userEvent.setup();
+    const dataMock = [user1, user2]   
     const mocks = [
       {
         request: {
-          query: GET_ALL_USERS
+          query: GET_ALL_USERS,
+          variables :{limit: DEFAULT_QUERY_LIMIT}
 
         },
         result: {
@@ -74,13 +74,12 @@ describe('<GqlAllUsers />', () => {
   })
 
   test('GqlAllUsers mounts correctly and renders users', async () => {
-
-    const dataMock = [user1, user2]
-    const userClick = userEvent.setup();
+    const dataMock = [user1, user2]   
     const mocks = [
       {
         request: {
-          query: GET_ALL_USERS
+          query: GET_ALL_USERS,
+          variables :{limit: DEFAULT_QUERY_LIMIT}
 
         },
         result: {
@@ -109,19 +108,14 @@ describe('<GqlAllUsers />', () => {
       expect(users[1].textContent).toEqual(`${JSON.stringify(user2)}`)
     })
 
-
-
-
-
   })
   test('GqlAllUsers mounts correctly and renders a error message if there is an error', async () => {
-
-    const dataMock = [user1, user2]
-    const userClick = userEvent.setup();
+    const dataMock = [user1, user2]   
     const mocks = [
       {
         request: {
-          query: GET_ALL_USERS
+          query: GET_ALL_USERS,
+          variables :{limit: DEFAULT_QUERY_LIMIT}
 
         },
         result: {
@@ -131,7 +125,6 @@ describe('<GqlAllUsers />', () => {
       }
 
     ];
-
     const wrapper = render(
       <ThemeProvider theme={getGqlTheme(theme)}>
         <MockedProvider mocks={mocks}>

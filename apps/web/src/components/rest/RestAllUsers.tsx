@@ -4,6 +4,7 @@ import { TDataUploadContainer } from "../common/DataUploadContainer";
 import { Box, Button, Grid, Theme, Typography } from "@mui/material";
 import { useTheme } from "@mui/styles";
 import { UpdateUserForm } from "./RestUpdateUserForm";
+import { DEFAULT_QUERY_LIMIT } from "src/utils/consts";
 
 export const textView = {
   title: 'All Rest Users:',
@@ -69,7 +70,7 @@ export function RestAllUsers(props: IHomePageProps) {
 
   const { data, error, isPending, refetch } = queryClient.getAll.useQuery(
     [],
-    { query: { limit: 10 } }
+    { query: { limit: DEFAULT_QUERY_LIMIT } }
   );
 
   return (

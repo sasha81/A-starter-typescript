@@ -2,10 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UsersController } from './users.controller';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, User } from '../from-proto/users';
-import { Users } from 'proto/auth';
-import { Observable, Subject } from 'rxjs';
-import { Metadata, ServerUnaryCall } from '@grpc/grpc-js';
-
 import { NotFoundException } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Group } from '@libs/users/users-mongodb/entities/users-view-mongodb.entity';

@@ -1,13 +1,7 @@
-import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { Args, Int, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GraphqlAdapterService } from "../services/graphql-adapter.service";
-import { CreateUserInput, UpdateUserInput, UserId } from "../dto/CreateUserInput";
-import { User } from "../model/User";
-import { Logger, UsePipes } from "@nestjs/common";
-import { ZodValidationPipe } from "nestjs-zod";
-import { createUserDtoSchema, userDtoSchema } from "../zod-schema/user-zod.schema";
+import { Logger } from "@nestjs/common";
 import { UserViewDto } from "../dto/UserWithGroupDto";
-
-
 
 //postman URI: http://localhost:process.env.PORT/graphql
 @Resolver()
@@ -16,7 +10,7 @@ export class UsersQueryResolver {
     constructor(private graphqlAdapterService: GraphqlAdapterService) { }
 
     @Query((returns) => [UserViewDto])
-    async getAllUsers(): Promise<UserViewDto[]> {
-        return await this.graphqlAdapterService.getAllUsers() as UserViewDto[];
+    async getAllUsers(@Args('limit', {type: ()=> Int}) limit: number): Promise<UserViewDto[]> {
+        return await this.graphqlAdapterService.getAllUsers(limit) as UserViewDto[];
     }
 }

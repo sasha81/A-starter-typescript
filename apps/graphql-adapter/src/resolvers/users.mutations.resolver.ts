@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GraphqlAdapterService } from "../services/graphql-adapter.service";
-import { CreateUserInput, UpdateUserInput, User, UserViewDto, UserId } from "../graphql-types/graphql-types";
+import { CreateUserInput, UpdateUserInput, User } from "../graphql-types/graphql-types";
 import { Logger, UsePipes } from "@nestjs/common";
 import { ZodValidationPipe } from "nestjs-zod";
 import { createUserDtoSchema } from "apps/graphql-adapter-code/src/zod-schema/user-zod.schema";

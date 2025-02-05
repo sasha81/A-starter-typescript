@@ -28,15 +28,10 @@ export const userWithIdAndGroupDtoSchema = userWithIdDtoSchema.extend({
   groups: z.array(groupSchema)
 })
 export const createUserDtoSchema: toZod<CreateUserInput> = z.object(userDtoObject)
-
-
-
-
-
 export const userDtoSchema: toZod<User> = userWithIdDtoSchema
 export const userWithGroupDto: toZod<UserViewDto> = userWithIdAndGroupDtoSchema
 
-//export const UserIdDto: toZod<UserId> = z.object(userIdObject)
+
 
 
 

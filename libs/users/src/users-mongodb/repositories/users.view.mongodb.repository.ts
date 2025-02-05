@@ -3,6 +3,7 @@ import { Group, MongoUserView } from "../entities/users-view-mongodb.entity";
 import { InjectModel } from "@nestjs/mongoose";
 import { Injectable, Logger } from "@nestjs/common";
 import { IMongoUser } from "../entities/users-mongodb.entity";
+import { DEFAULT_QUERY_LIMIT } from "@libs/users/config/default-consts";
 
 
 
@@ -11,8 +12,8 @@ export class UserViewMongoDBRepository {
   private readonly logger = new Logger(UserViewMongoDBRepository.name);
   constructor(@InjectModel('USERS-VIEW', 'MONGO_VIEW') private userViewModel: Model<MongoUserView>) { }
 
-  async findAll(): Promise<MongoUserView[]> {
-    const result = await this.userViewModel.find({}).limit(50);
+  async findAll(lim=DEFAULT_QUERY_LIMIT): Promise<MongoUserView[]> {
+    const result = await this.userViewModel.find({}).limit(lim);
     this.logger.log('users query: ', result)
     return result;
   }

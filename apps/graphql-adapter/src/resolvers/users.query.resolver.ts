@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GraphqlAdapterService } from "../services/graphql-adapter.service";
-import { CreateUserInput, UpdateUserInput, User, UserViewDto, UserId } from "../graphql-types/graphql-types";
+import { CreateUserInput, UpdateUserInput, User, UserView, UserId } from "../graphql-types/graphql-types";
 import { Logger } from "@nestjs/common";
 
 
@@ -12,7 +12,7 @@ export class UsersQueryResolver {
     constructor(private graphqlAdapterService: GraphqlAdapterService){}
 
     @Query()    
-    async getAllUsers():Promise<UserViewDto[]>{
-        return await this.graphqlAdapterService.getAllUsers() as UserViewDto[];
+    async getAllUsers(@Args('limit') limit: number):Promise<UserView[]>{
+        return await this.graphqlAdapterService.getAllUsers(limit) as UserView[];
     }
 }

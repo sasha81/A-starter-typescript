@@ -1,10 +1,10 @@
-
 import { Box, Button, Grid, Theme, Typography } from '@mui/material'
 import { ApolloError, gql, useQuery } from '@apollo/client';
 import { useTheme } from "@mui/styles";
 import { GraphQLError } from 'graphql';
 import { Group, UserViewDto } from '@graphql-adapter-code/dto/UserWithGroupDto';
 import { UpdateUserForm } from './GqlUpdateUserForm';
+import { DEFAULT_QUERY_LIMIT } from 'src/utils/consts';
 
 export const textView = {
   title: 'All Gql Users:',
@@ -16,8 +16,8 @@ export const textView = {
 }
 
 export const GET_ALL_USERS = gql(`
-    query FindUsers {
-        getAllUsers {
+    query FindUsers ($limit: Int!) {
+        getAllUsers (limit: $limit) {
             name
             age
             userId
@@ -78,7 +78,7 @@ export const getStyles = (theme: Theme) => ({
 export function GqlAllUsers() {
   const theme = useTheme() as Theme;
   const styles = getStyles(theme)
-  const { data, loading, error, refetch } = useQuery<IGqlData>(GET_ALL_USERS)
+  const { data, loading, error, refetch } = useQuery<IGqlData>(GET_ALL_USERS, {variables :{limit: DEFAULT_QUERY_LIMIT}})
 
 
 

@@ -39,7 +39,5 @@ export class UsersUpdateService {
     await this.userQueryMongoDbRepo.upsertUserGroup(updateUserArr)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
+  
 }
