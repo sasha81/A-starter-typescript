@@ -49,16 +49,7 @@
       "compilerOptions": {
         "tsConfigPath": "libs/commons/tsconfig.lib.json"
       }
-    },
-    "client": {
-      "type": "library",
-      "root": "libs/client",
-      "entryFile": "index",
-      "sourceRoot": "libs/client/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/client/tsconfig.lib.json"
-      }
-    },
+    },   
     "amqp-simple-adapter": {
       "type": "application",
       "root": "apps/amqp-simple-adapter",
